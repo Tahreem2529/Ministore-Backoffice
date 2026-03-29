@@ -13,7 +13,7 @@ namespace App.WindowsApp.Forms
     public partial class ProductForm : Form
     {
         public ProductForm(ProductFormModeEnum mode, Product? p)
-        {  
+        {
 
             InitializeComponent();
 
@@ -33,13 +33,13 @@ namespace App.WindowsApp.Forms
             {
                 btnSave.Text = "Update";
             }
-            else if(mode == ProductFormModeEnum.View)
+            else if (mode == ProductFormModeEnum.View)
             {
                 btnSave.Visible = false;
 
             }
             if (mode == ProductFormModeEnum.Edit || mode == ProductFormModeEnum.View)
-            { 
+            {
                 txbID.Text = p.Id;
                 txbName.Text = p.Name;
                 cmbCategory.SelectedItem = p.Category;
@@ -47,7 +47,7 @@ namespace App.WindowsApp.Forms
                 nudPrice.Value = p.Price;
                 nudStock.Value = p.Stock;
             }
-           
+
 
         }
 
@@ -62,6 +62,11 @@ namespace App.WindowsApp.Forms
         }
 
         private void lblID_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
         {
 
         }

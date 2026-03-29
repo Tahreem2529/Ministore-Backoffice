@@ -32,8 +32,8 @@
             pnlProductForm = new Panel();
             pnlproductBottom = new Panel();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            btnCancel = new Button();
             btnSave = new Button();
+            btnCancel = new Button();
             tblProductForm = new TableLayoutPanel();
             lblName = new Label();
             lblCategory = new Label();
@@ -76,12 +76,12 @@
             pnlproductBottom.Name = "pnlproductBottom";
             pnlproductBottom.Padding = new Padding(16);
             pnlproductBottom.Size = new Size(768, 88);
-            pnlproductBottom.TabIndex = 1;
+            pnlproductBottom.TabIndex = 0;
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.Controls.Add(btnCancel);
             flowLayoutPanel1.Controls.Add(btnSave);
+            flowLayoutPanel1.Controls.Add(btnCancel);
             flowLayoutPanel1.Dock = DockStyle.Bottom;
             flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
             flowLayoutPanel1.Location = new Point(16, 19);
@@ -89,32 +89,33 @@
             flowLayoutPanel1.Size = new Size(736, 53);
             flowLayoutPanel1.TabIndex = 0;
             // 
-            // btnCancel
-            // 
-            btnCancel.Image = Properties.Resources.cancel1;
-            btnCancel.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCancel.Location = new Point(639, 3);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(94, 47);
-            btnCancel.TabIndex = 2;
-            btnCancel.Text = "Cancel";
-            btnCancel.TextAlign = ContentAlignment.MiddleLeft;
-            btnCancel.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnCancel.UseVisualStyleBackColor = true;
-            // 
             // btnSave
             // 
             btnSave.AutoSize = true;
             btnSave.Image = Properties.Resources.file_download;
             btnSave.ImageAlign = ContentAlignment.MiddleLeft;
-            btnSave.Location = new Point(539, 3);
+            btnSave.Location = new Point(639, 3);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(94, 47);
-            btnSave.TabIndex = 1;
+            btnSave.TabIndex = 0;
             btnSave.Text = "Save";
             btnSave.TextAlign = ContentAlignment.MiddleLeft;
             btnSave.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSave.UseVisualStyleBackColor = true;
+            // 
+            // btnCancel
+            // 
+            btnCancel.Image = Properties.Resources.cancel1;
+            btnCancel.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCancel.Location = new Point(539, 3);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(94, 47);
+            btnCancel.TabIndex = 1;
+            btnCancel.Text = "Cancel";
+            btnCancel.TextAlign = ContentAlignment.MiddleLeft;
+            btnCancel.TextImageRelation = TextImageRelation.ImageBeforeText;
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // tblProductForm
             // 
@@ -153,8 +154,9 @@
             lblName.Location = new Point(3, 0);
             lblName.Name = "lblName";
             lblName.Size = new Size(114, 35);
-            lblName.TabIndex = 0;
+            lblName.TabIndex = 6;
             lblName.Text = "Name";
+            lblName.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lblCategory
             // 
@@ -163,8 +165,9 @@
             lblCategory.Location = new Point(3, 35);
             lblCategory.Name = "lblCategory";
             lblCategory.Size = new Size(114, 35);
-            lblCategory.TabIndex = 1;
+            lblCategory.TabIndex = 7;
             lblCategory.Text = "Category";
+            lblCategory.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lblPrice
             // 
@@ -173,8 +176,9 @@
             lblPrice.Location = new Point(3, 70);
             lblPrice.Name = "lblPrice";
             lblPrice.Size = new Size(114, 34);
-            lblPrice.TabIndex = 2;
+            lblPrice.TabIndex = 8;
             lblPrice.Text = "Price";
+            lblPrice.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lblStock
             // 
@@ -183,8 +187,9 @@
             lblStock.Location = new Point(3, 104);
             lblStock.Name = "lblStock";
             lblStock.Size = new Size(114, 36);
-            lblStock.TabIndex = 3;
+            lblStock.TabIndex = 9;
             lblStock.Text = "Stock";
+            lblStock.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lblStatus
             // 
@@ -193,8 +198,9 @@
             lblStatus.Location = new Point(3, 140);
             lblStatus.Name = "lblStatus";
             lblStatus.Size = new Size(114, 35);
-            lblStatus.TabIndex = 4;
+            lblStatus.TabIndex = 10;
             lblStatus.Text = "Status";
+            lblStatus.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // lblID
             // 
@@ -203,8 +209,9 @@
             lblID.Location = new Point(3, 175);
             lblID.Name = "lblID";
             lblID.Size = new Size(114, 39);
-            lblID.TabIndex = 5;
+            lblID.TabIndex = 11;
             lblID.Text = "ID";
+            lblID.TextAlign = ContentAlignment.MiddleLeft;
             lblID.Click += lblID_Click;
             // 
             // txbName
@@ -213,16 +220,17 @@
             txbName.Location = new Point(123, 3);
             txbName.Name = "txbName";
             txbName.Size = new Size(642, 27);
-            txbName.TabIndex = 6;
+            txbName.TabIndex = 0;
             // 
             // txbID
             // 
+            txbID.BackColor = SystemColors.Window;
             txbID.Dock = DockStyle.Fill;
             txbID.Location = new Point(123, 178);
             txbID.Name = "txbID";
             txbID.ReadOnly = true;
             txbID.Size = new Size(642, 27);
-            txbID.TabIndex = 7;
+            txbID.TabIndex = 5;
             // 
             // cmbCategory
             // 
@@ -231,7 +239,7 @@
             cmbCategory.Location = new Point(123, 38);
             cmbCategory.Name = "cmbCategory";
             cmbCategory.Size = new Size(642, 28);
-            cmbCategory.TabIndex = 8;
+            cmbCategory.TabIndex = 1;
             // 
             // cmbStatus
             // 
@@ -240,7 +248,7 @@
             cmbStatus.Location = new Point(123, 143);
             cmbStatus.Name = "cmbStatus";
             cmbStatus.Size = new Size(642, 28);
-            cmbStatus.TabIndex = 9;
+            cmbStatus.TabIndex = 4;
             // 
             // nudPrice
             // 
@@ -248,7 +256,7 @@
             nudPrice.Location = new Point(123, 73);
             nudPrice.Name = "nudPrice";
             nudPrice.Size = new Size(642, 27);
-            nudPrice.TabIndex = 12;
+            nudPrice.TabIndex = 2;
             nudPrice.ValueChanged += nudprice_ValueChanged;
             // 
             // nudStock
@@ -257,7 +265,7 @@
             nudStock.Location = new Point(123, 107);
             nudStock.Name = "nudStock";
             nudStock.Size = new Size(642, 27);
-            nudStock.TabIndex = 13;
+            nudStock.TabIndex = 3;
             // 
             // contextMenuStrip1
             // 
