@@ -97,7 +97,7 @@
             btnSave.Location = new Point(639, 3);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(94, 47);
-            btnSave.TabIndex = 0;
+            btnSave.TabIndex = 1;
             btnSave.Text = "Save";
             btnSave.TextAlign = ContentAlignment.MiddleLeft;
             btnSave.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -110,7 +110,7 @@
             btnCancel.Location = new Point(539, 3);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(94, 47);
-            btnCancel.TabIndex = 1;
+            btnCancel.TabIndex = 0;
             btnCancel.Text = "Cancel";
             btnCancel.TextAlign = ContentAlignment.MiddleLeft;
             btnCancel.TextImageRelation = TextImageRelation.ImageBeforeText;
