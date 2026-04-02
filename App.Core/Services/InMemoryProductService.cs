@@ -23,14 +23,21 @@ namespace App.Core.Services
             return _products.OrderBy(p => p.Name).ToList();
         }
 
-        void IProductService.Add(Product product)
+        public Product Add(Product product)
         {
-            throw new NotImplementedException();
+           if (product != null)
+            {
+                product.Id = GenerateId();
+                _products.Add(product);
+            }
+           return product;
         }
 
-        bool IProductService.Delete(string id)
+        public bool Delete(string id)
         {
-            throw new NotImplementedException();
+            Product prodToBeDeleted = GetById(id);
+            _products.Remove(prodToBeDeleted);
+            return true;
         }
 
         private void GenerateFakeProducts()
@@ -64,19 +71,44 @@ namespace App.Core.Services
          return "p-" + Guid.NewGuid().ToString("N").Substring(0,6);
         }
 
-        Product IProductService.GetById(string id)
+        public Product GetById(string id)
         {
-            throw new NotImplementedException();
+            Product prod = _products.Find(p => p.Id == id);
+            return prod;
         }
 
-        List<Product> IProductService.Search(string text, ProductCategoryEnum? category, ProductStatusEnum? status)
+        public List<Product> Search(string text, ProductCategoryEnum? category, ProductStatusEnum? status)
         {
-            throw new NotImplementedException();
+            List<Product> _filtered = _products.ToList();
+           _filtered = _filtered.Where(p => p.Name.Contains(text)).ToList();
+
+            if (category != null)
+            {
+                _filtered = _filtered.Where(p => p.Category == category).ToList();
+            }
+            if (status != null)
+            {
+                _filtered = _filtered.Where(p => p.Status == status).ToList();
+            }
+            return _filtered;
         }
 
-        bool IProductService.Update(Product product)
+        public bool Update(Product product)
         {
-            throw new NotImplementedException();
+           if (product != null)
+            {
+                Product existing = _products.Find(p => p.Id == product.Id);
+                if (existing == null)return false;
+                {
+                    existing.Name = product.Name;
+                    existing.Category = product.Category;
+                    existing.Price = product.Price;
+                    existing.Stock = product.Stock;
+                    existing.Status = product.Status;
+                    return true;
+                }
+            }
+            return false;
         }
     }
 

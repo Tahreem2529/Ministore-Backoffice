@@ -67,6 +67,7 @@
             pnlProductForm.Padding = new Padding(16);
             pnlProductForm.Size = new Size(800, 450);
             pnlProductForm.TabIndex = 0;
+            pnlProductForm.Paint += pnlProductForm_Paint;
             // 
             // pnlproductBottom
             // 
@@ -92,6 +93,7 @@
             // btnSave
             // 
             btnSave.AutoSize = true;
+            btnSave.Dock = DockStyle.Fill;
             btnSave.Image = Properties.Resources.file_download;
             btnSave.ImageAlign = ContentAlignment.MiddleLeft;
             btnSave.Location = new Point(639, 3);
@@ -102,9 +104,11 @@
             btnSave.TextAlign = ContentAlignment.MiddleLeft;
             btnSave.TextImageRelation = TextImageRelation.ImageBeforeText;
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
+            btnCancel.Dock = DockStyle.Fill;
             btnCancel.Image = Properties.Resources.cancel1;
             btnCancel.ImageAlign = ContentAlignment.MiddleLeft;
             btnCancel.Location = new Point(539, 3);
@@ -282,6 +286,7 @@
             Name = "ProductForm";
             StartPosition = FormStartPosition.CenterParent;
             Text = "ProductForm";
+            FormClosing += ProductForm_FormClosing;
             pnlProductForm.ResumeLayout(false);
             pnlproductBottom.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);

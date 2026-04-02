@@ -10,7 +10,7 @@ namespace App.Core.Contracts
 {
   public   interface IProductService
     {
-        void Add(Product product);
+        Product Add(Product product);
         bool Update(Product product);
          bool Delete(string id);
          Product GetById(string id);

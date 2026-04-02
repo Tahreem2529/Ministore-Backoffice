@@ -1,4 +1,5 @@
-﻿using App.Core.Models;
+﻿using App.Core.Contracts;
+using App.Core.Models;
 using App.Core.Utilities;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,11 @@ namespace App.WindowsApp.Forms
 {
     public partial class ProductForm : Form
     {
-        public ProductForm(ProductFormModeEnum mode, Product? p)
+        ProductFormModeEnum _mode;
+        Product _product;
+        IProductService _service;
+
+        public ProductForm(ProductFormModeEnum mode, Product? p, IProductService service)
         {
 
             InitializeComponent();
@@ -29,6 +34,11 @@ namespace App.WindowsApp.Forms
             cmbStatus.Items.Clear();
             cmbStatus.DataSource = Enum.GetValues(typeof(ProductStatusEnum));
             cmbStatus.SelectedIndex = 0;
+
+            _mode = mode;
+            _product = p;
+            _service = service;
+
             if (mode == ProductFormModeEnum.Edit)
             {
                 btnSave.Text = "Update";
@@ -67,6 +77,48 @@ namespace App.WindowsApp.Forms
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (_mode == ProductFormModeEnum.Add)
+            {
+                Product newProduct = new Product();
+                newProduct.Name = txbName.Text;
+                newProduct.Category = (ProductCategoryEnum)cmbCategory.SelectedItem;
+                newProduct.Status = (ProductStatusEnum)cmbStatus.SelectedItem;
+                newProduct.Price = nudPrice.Value;
+                newProduct.Stock = (int)nudStock.Value;
+
+                Product temp = _service.Add(newProduct);
+                txbID.Text = temp?.Id ?? "";
+
+
+                // Add logic
+            }
+            else if (_mode == ProductFormModeEnum.Edit)
+            {
+                _product.Name = txbName.Text;
+                _product.Category = (ProductCategoryEnum)cmbCategory.SelectedItem;
+                _product.Status = (ProductStatusEnum)cmbStatus.SelectedItem;
+                _product.Price = nudPrice.Value;
+                _product.Stock = (int)nudStock.Value;
+
+                bool isUpdated = _service.Update(_product);
+                // Update logic
+            }
+
+            this.Close();
+        }
+
+        private void pnlProductForm_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ProductForm_FormClosing(object sender, FormClosingEventArgs e)
         {
 
         }
